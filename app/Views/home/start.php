@@ -7,11 +7,23 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .bg {
+      background: linear-gradient(rgba(255, 255, 255, 1) 0%, rgba(251, 251, 251, 0.1) 100%), linear-gradient(90deg, #84d2ff, #8d5acd);
+    }
+  </style>
+
   <title>SOURCE PICTURE</title>
+
+
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/home">
+        <img src="/img/logo5.png" alt="" style="object-fit: cover;" width="70" height="45" class="d-inline-block align-text-top">
+      </a>
+      <a class="navbar-brand" href="#">SOURCE PICTURE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,10 +35,10 @@
         </ul>
         <ul class="navbar-nav ms-auto mb-lg-0">
           <li class="nav-item">
-            <button class="nav-link button-login active" aria-current="page" onclick="redirectToPage('/login')">Login</button>
+            <button class="button-login active" aria-current="page" onclick="redirectToPage('/login')">Login</button>
           </li>
           <li class="nav-item">
-            <a class="nav-link button-register active" aria-current="page" onclick="redirectToPage('/register')">Register</a>
+            <a class=" button-register active" aria-current="page" onclick="redirectToPage('/register')">Register</a>
           </li>
         </ul>
       </div>

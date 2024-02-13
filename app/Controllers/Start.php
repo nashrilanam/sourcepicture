@@ -36,6 +36,7 @@ class Start extends Controller
         return view('user/profile');
     }
 
+
     public function upload(): string
     {
         return view('user/upload');
@@ -55,7 +56,7 @@ class Start extends Controller
 
         $this->FotoModel->save([
             'judul_foto' => $this->request->getVar('judul'),
-            'deskripsi_foto' => $this->request->getVar('desk'),
+            'deskripsi_foto' => $this->request->getVar('deskripsi'),
             'tanggal_unggahan' => date('Y-m-d'),
             'lokasi_file' => $newName,
             'id_album' => '1',
@@ -63,5 +64,10 @@ class Start extends Controller
         ]);
 
         return redirect()->to('/home');
+    }
+
+    public function post(): string
+    {
+        return view('user/post');
     }
 }

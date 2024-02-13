@@ -12,51 +12,6 @@
 
     <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/home">
-                <img src="/img/logo5.png" alt="" style="object-fit: cover;" width="70" height="45" class="d-inline-block align-text-top">
-            </a>
-            <div class="brand">SOURCE PICTURE</div>
-            <ul class="navbar-nav ms-3 me-3 mb-lg-0 inihome">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav me-auto mb-lg-0 inicreate">
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="/upload">Upload</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav me-3 ms-2 mb-lg-0 inicrt">
-                <li class="nav-item">
-                    <a class="nav-link active " aria-current="page" href="/upload"><i class="fa-solid fa-plus fa-lg" style="color: #000000;"></i></a>
-                </li>
-            </ul>
-            <ul class="navbar-nav me-5 ms-5 mx-auto mb-lg-0">
-                <li class="nav-item">
-                </li>
-            </ul>
-            <ul class="navbar-nav ms-3 mb-lg-0">
-                <li class="nav-item me-5">
-                    <div class="dropdown ">
-                        <a class="nav-link active dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-current="page" href="#">
-                            <img src="/img/profile.jpg" alt="user" width="45" height="45" class="d-inline-block align-text-top rounded-circle">
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-                            <li><a class="dropdown-item" href="/">Log Out</a></li>
-                            <li>
-
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
 </head>
 
 <body>
@@ -81,7 +36,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Deskripsi</label>
-                                <textarea autocomplete="off" type="text" name="desk" id="deskripsi_foto" class="form-control" placeholder="Ketik Deskripsi Foto Anda" style="font-size: 15px"></textarea>
+                                <textarea autocomplete="off" type="text" name="deskripsi" id="deskripsi_foto" class="form-control" placeholder="Ketik Deskripsi Foto Anda" style="font-size: 15px"></textarea>
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Foto</label>

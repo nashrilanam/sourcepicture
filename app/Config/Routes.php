@@ -19,3 +19,5 @@ $routes->get('/upload', 'Start::upload');
 $routes->post('/upload/save', 'Start::save');
 $routes->get('/profile', 'Start::profile');
 $routes->get('/editprofile', 'Start::editprofile');
+
+$routes->get('/post', 'Start::post');

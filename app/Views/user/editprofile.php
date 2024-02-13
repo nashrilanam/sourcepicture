@@ -47,15 +47,6 @@
                                 <input autocomplete="off" type="text" name="alamat" id="alamat" class="form-control" placeholder="Ketik Judul Foto Anda" style="font-size: 15px">
                             </div>
                             <div class="mb-4">
-                                <label for="exampleInputEmail1" class="form-label">Pilih Kategori</label>
-                                <select class="form-control" aria-label="Default select example">
-                                    <option selected>Kategori</option>
-                                    <option value="1">Kebudayaan</option>
-                                    <option value="2">Pemandangan</option>
-                                    <option value="3">Hewan</option>
-                                </select>
-                            </div>
-                            <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Foto</label>
                                 <input type="file" name="foto" id="foto" class="form-control">
                                 <!-- <input type="text"> -->

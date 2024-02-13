@@ -68,13 +68,6 @@
       margin: 20px;
     }
 
-    .gallery-item {
-      display: inline-block;
-      width: 100%;
-      margin-bottom: 15px;
-      break-inside: avoid;
-    }
-
     .gallery-item img {
       width: 100%;
       border-radius: 8px;
@@ -87,7 +80,7 @@
   <div class="gallery-container">
     <!-- Gallery items will be dynamically added here -->
     <?php foreach ($foto as $foto) : ?>
-      <div class="gallery-item">
+      <div class="gallery-item" onclick="redirectToPage('/post')">
         <img src="/foto_storage/<?= $foto['lokasi_file'] ?>">
       </div>
     <?php endforeach; ?>

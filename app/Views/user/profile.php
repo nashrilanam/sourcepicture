@@ -17,7 +17,6 @@
         <h3><?= session()->get('nama_lengkap'); ?></h3>
             <h3><?= session()->get('username'); ?></h3>
             <h3><?= session()->get('email'); ?></h3>
-            <h3><?= session()->get('alamat');?></h3>
             <button class="btn btn-primary" onclick="redirectToPage('/editprofile')">Edit Profile</button>
             <a href="<?=base_url('/')?>"><button class="btn btn-secondary">Log Out</></button></a>
 

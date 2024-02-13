@@ -1,38 +1,35 @@
-body{
-background: rgb(243, 245, 244);
+body {
+  background: linear-gradient(90deg, #84d2ff, #8d5acd);
 }
 
-.button-login{
-    background-color: blueviolet;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right:1vh;
-
+.button-login {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 1vh;
 }
 
-.button-register{
-    background-color: blueviolet;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-right:1vh;
-
+.button-register {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 1vh;
 }
-
