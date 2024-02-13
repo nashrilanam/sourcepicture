@@ -6,7 +6,7 @@ use CodeIgniter\Controller;
 use App\Models\FotoModel;
 
 
-class Start extends Controller
+class Start extends BaseController
 {
 
     protected $FotoModel;
@@ -66,8 +66,13 @@ class Start extends Controller
         return redirect()->to('/home');
     }
 
-    public function post(): string
+    public function post($id)
     {
-        return view('user/post');
+
+        $data = [
+            'foto' => $this->FotoModel->find($id)
+        ];
+
+        return view('user/post', $data);
     }
 }

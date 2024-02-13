@@ -78,9 +78,8 @@
 
 <body>
   <div class="gallery-container">
-    <!-- Gallery items will be dynamically added here -->
     <?php foreach ($foto as $foto) : ?>
-      <div class="gallery-item" onclick="redirectToPage('/post')">
+      <div class="gallery-item mt-3" onclick="redirectToPage('/post/<?= $foto['id_foto'] ?>')">
         <img src="/foto_storage/<?= $foto['lokasi_file'] ?>">
       </div>
     <?php endforeach; ?>
