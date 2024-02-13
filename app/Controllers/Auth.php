@@ -81,6 +81,7 @@ class Auth extends BaseController
 
             // kirim session id, nama, username, email, alamat
             $data = [
+                'id_user' => $user['id_user'],
                 'nama_lengkap' => $user['nama_lengkap'],
                 'username' => $user['username'],
                 'email' => $user['email'],

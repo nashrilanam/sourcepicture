@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\FotoModel;
 
+
 class Start extends Controller
 {
 
@@ -55,12 +56,12 @@ class Start extends Controller
         $this->FotoModel->save([
             'judul_foto' => $this->request->getVar('judul'),
             'deskripsi_foto' => $this->request->getVar('desk'),
-            'id_user' => '1',
-            'id_album' => '1',
+            'tanggal_unggahan' => date('Y-m-d'),
             'lokasi_file' => $newName,
+            'id_album' => '1',
+            'id_user' => session()->get('id_user')
         ]);
 
-        session()->setFlashdata('pesan', 'Data Berhasil Ditambahkan');
         return redirect()->to('/home');
     }
 }

@@ -48,17 +48,13 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/profile">Profile</a></li>
               <li><a class="dropdown-item" href="/">Log Out</a></li>
-              <li>
-
-              </li>
             </ul>
           </div>
-
-
         </li>
       </ul>
     </div>
   </nav>
+
   <style>
     body {
       margin: 0;
@@ -90,16 +86,11 @@
 <body>
   <div class="gallery-container">
     <!-- Gallery items will be dynamically added here -->
-    <div class="gallery-item">
-      <img src="/img/gambar1.jpg" alt="Image 1">
-    </div>
-    <div class="gallery-item">
-      <img src="/img/gambar2.jpg" alt="Image 2">
-    </div>
-    <div class="gallery-item">
-      <img src="/img/gambar3.jpg" alt="Image 3">
-    </div>
-    <!-- Add more items as needed -->
+    <?php foreach ($foto as $foto) : ?>
+      <div class="gallery-item">
+        <img src="/foto_storage/<?= $foto['lokasi_file'] ?>">
+      </div>
+    <?php endforeach; ?>
   </div>
   <script src="js/onclick.js"></script>
   <script src="https://kit.fontawesome.com/a3864c1aa4.js" crossorigin="anonymous"></script>

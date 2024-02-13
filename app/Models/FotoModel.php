@@ -6,10 +6,10 @@ use CodeIgniter\Model;
 
 class FotoModel extends Model
 {
-    protected $table      = 'foto';
-    protected $useAutoIncrement = false;
+    protected $table = 'foto';
+    protected $useAutoIncrement = true;
     protected $primaryKey = 'id_foto';
-    protected $allowedFields = ['judul_foto', 'deskripsi_foto', 'tanggal_unggahan', 'lokasi_file', 'id_album', 'id_user'];
+    protected $allowedFields = ['judul_foto', 'deskripsi_foto', 'tanggal_unggahan', 'lokasi_file'];
 
     public function getFoto($id = false)
     {
