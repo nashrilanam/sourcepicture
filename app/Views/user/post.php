@@ -58,7 +58,6 @@
 </head>
 
 <body>
-    \
     <div class="container background">
         <div class="row">
             <div class="col-foto">
