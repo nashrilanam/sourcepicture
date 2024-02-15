@@ -4,16 +4,21 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\FotoModel;
+use App\Models\AuthModel;
 
 
 class Start extends BaseController
 {
 
     protected $FotoModel;
+    protected $AuthModel;
+    protected $session;
 
     public function __construct()
     {
         $this->FotoModel = new FotoModel();
+        $this->AuthModel = new AuthModel();
+        $this->session = session();
     }
 
     public function index()
@@ -74,5 +79,36 @@ class Start extends BaseController
         ];
 
         return view('user/post', $data);
+    }
+
+    public function editprofilesave()
+    {
+
+
+
+        // ambil gambar
+        $fileDokumen = $this->request->getFile('foto');
+        $newName = $fileDokumen->getRandomName();
+        $fileDokumen->move('foto_storage', $newName);
+
+        $data = [
+            'nama' => $this->request->getVar('nama'),
+            'username' => $this->request->getVar('username'),
+            'email' => $this->request->getVar('email'),
+            'alamat' => $this->request->getVar('alamat'),
+            'foto' => $newName
+        ];
+
+        $this->AuthModel->save([
+            'id_user' => session()->get('id_user'),
+            'nama_lengkap' => $data['nama'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'alamat' => $data['alamat'],
+            'password' => session()->get('password'),
+            'foto' => $data['foto']
+        ]);
+
+        return redirect()->to('/home');
     }
 }

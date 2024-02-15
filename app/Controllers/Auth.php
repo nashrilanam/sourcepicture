@@ -36,6 +36,13 @@ class Auth extends BaseController
 
         // enkripsi password
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+        $token = bin2hex(random_bytes(10));
+
+        $email = \Config\Services::email();
+        $email->setTo($data['email']);
+        $email->setSubject('Registrasi Akun');
+        $email->setMessage('Selamat Datang ' . $data['username'] . ' di SourcePicture, akun anda berhasil dibuat. Silahkan Activasi akun anda dengan klik link berikut :' . base_url() . 'auth/activate/' . $token);
+        $email->send();
 
         // simpan ke database
         $this->AuthModel->save([
@@ -69,6 +76,7 @@ class Auth extends BaseController
                     'nama_lengkap' => $user['nama_lengkap'],
                     'email' => $user['email'],
                     'alamat' => $user['alamat'],
+                    'password' => $user['password'],
                     'foto' => $user['foto'],
                     'logged_in' => TRUE
                 ]);
@@ -86,7 +94,8 @@ class Auth extends BaseController
                 'username' => $user['username'],
                 'email' => $user['email'],
                 'alamat' => $user['alamat'],
-                'foto' => $user['foto']
+                'foto' => $user['foto'],
+
             ];
 
             session()->setFlashdata('pesan', 'Username tidak ditemukan.');

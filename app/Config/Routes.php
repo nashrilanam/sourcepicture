@@ -17,7 +17,8 @@ $routes->get('/logout', 'Auth::logout');
 
 $routes->get('/upload', 'Start::upload');
 $routes->post('/upload/save', 'Start::save');
-$routes->get('/profile', 'Start::profile');
 $routes->get('/editprofile', 'Start::editprofile');
+$routes->post('/editprofile/save', 'Start::editprofilesave');
 
-$routes->get('/post/(:num)', 'Start::post/$1');
+$routes->get('/profile', 'Start::profile');
+$routes->post('/post/(:num)', 'Start::post/$1');

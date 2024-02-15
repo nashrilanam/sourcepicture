@@ -9,7 +9,7 @@ class AuthModel extends Model
     protected $table      = 'user';
     protected $useAutoIncrement = true;
     protected $primaryKey = 'id_user';
-    protected $allowedFields = ['nama_lengkap', 'username', 'email', 'password', 'alamat', 'foto'];
+    protected $allowedFields = ['nama_lengkap', 'username', 'email', 'password', 'alamat', 'foto', 'active'];
 
     public function getInput($id = false)
     {

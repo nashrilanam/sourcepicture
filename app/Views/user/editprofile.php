@@ -27,7 +27,7 @@
             <div class="container mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="" enctype="multipart/form-data">
+                        <form method="post" action="/editprofile/save" enctype="multipart/form-data">
                             <h3>Edit Profile</h3>
                             <br>
                             <div class="mb-4">
