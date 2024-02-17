@@ -21,4 +21,4 @@ $routes->get('/editprofile', 'Start::editprofile');
 $routes->post('/editprofile/save', 'Start::editprofilesave');
 
 $routes->get('/profile', 'Start::profile');
-$routes->post('/post/(:num)', 'Start::post/$1');
+$routes->get('/post/(:num)', 'Start::post/$1');
