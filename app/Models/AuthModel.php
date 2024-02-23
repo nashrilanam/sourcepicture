@@ -14,7 +14,7 @@ class AuthModel extends Model
     public function getInput($id = false)
     {
         if ($id == false) {
-            return $this->findAll();
+            return 'tidak ada user';
         }
 
         return $this->where(['id_user' => $id])->first();

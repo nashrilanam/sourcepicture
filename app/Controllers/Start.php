@@ -38,7 +38,12 @@ class Start extends BaseController
 
     public function profile()
     {
-        return view('user/profile');
+        $user = session()->get('id_user');
+        $userprofile = $this->AuthModel->where('id_user', $user)->first();
+        $data = [
+            'user' => $userprofile
+        ];
+        return view('user/profile', $data);
     }
 
 
@@ -107,6 +112,17 @@ class Start extends BaseController
             'alamat' => $data['alamat'],
             'password' => session()->get('password'),
             'foto' => $data['foto']
+        ]);
+
+
+
+        session()->set([
+            'id_user' => session()->get('id_user'),
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'alamat' => $data['alamat'],
+            'foto' => $data['foto'],
+            'logged_in' => TRUE
         ]);
 
         return redirect()->to('/home');

@@ -21,11 +21,11 @@
     <div class="card o-hidden border-0 shadow-lg my-5 col-lg-6 mx-auto">
         <div class="card-body p-0">
             <div class="container text-center mt-5">
-                <img src="/img/profile.jpg" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+                <img src="<?= 'foto_storage/' . $user['foto'] ?>" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                 <div class="mt-3">
-                    <h3><?= session()->get('nama_lengkap'); ?></h3>
-                    <h3><?= session()->get('username'); ?></h3>
-                    <h3><?= session()->get('email'); ?></h3>
+                    <h3><?= $user['nama_lengkap'] ?></h3>
+                    <h3><?= $user['username'] ?></h3>
+                    <h3><?= $user['email'] ?></h3>
                     <button class="btn btn-primary" onclick="redirectToPage('/editprofile')">Edit Profile</button>
                     <a href="<?= base_url('/') ?>"><button class="btn btn-secondary">Log Out</></button></a>
 

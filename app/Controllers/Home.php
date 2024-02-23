@@ -17,15 +17,16 @@ class Home extends BaseController
         $this->AuthModel = new AuthModel();
     }
 
-    public function index(): string
+    public function index()
     {
+        // Ambil data foto
+        $data = [
+            'foto' => $this->FotoModel->findAll(),
+            'foto_beranda' => $this->AuthModel->find(session('user_id')) // Ganti 'user_id' sesuai dengan nama kolom yang sesuai
+        ];
 
-        $user =
-
-            // ambil data foto
-            $data = [
-                'foto' => $this->FotoModel->findAll()
-            ];
+        // var_dump($data['foto_beranda']);
+        // die;
 
         return view('user/beranda', $data);
     }

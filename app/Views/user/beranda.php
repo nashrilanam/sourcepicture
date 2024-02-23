@@ -42,7 +42,7 @@
         <li class="nav-item me-5">
           <div class="dropdown ">
             <a class="nav-link active dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-current="page" href="#">
-              <img src="/foto_storage/<?= session()->get('foto'); ?>" alt="user" width="45" height="45" class="d-inline-block align-text-top rounded-circle">
+              <img src="/foto_storage/<?= session('foto') ?>" alt="user" width="45" height="45" class="d-inline-block align-text-top rounded-circle">
             </a>
 
             <ul class="dropdown-menu">

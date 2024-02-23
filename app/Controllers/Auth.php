@@ -72,6 +72,7 @@ class Auth extends BaseController
             // cek apakah password benar
             if (password_verify($data['password'], $user['password'])) {
                 session()->set([
+                    'id_user' => $user['id_user'],
                     'username' => $user['username'],
                     'nama_lengkap' => $user['nama_lengkap'],
                     'email' => $user['email'],
@@ -86,17 +87,6 @@ class Auth extends BaseController
                 return redirect()->to('/login');
             }
         } else {
-
-            // kirim session id, nama, username, email, alamat
-            $data = [
-                'id_user' => $user['id_user'],
-                'nama_lengkap' => $user['nama_lengkap'],
-                'username' => $user['username'],
-                'email' => $user['email'],
-                'alamat' => $user['alamat'],
-                'foto' => $user['foto'],
-
-            ];
 
             session()->setFlashdata('pesan', 'Username tidak ditemukan.');
             return redirect()->to('/login');
