@@ -28,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="post" action="/upload/save" enctype="multipart/form-data">
-                            <h3>Tambahkan Foto</h3>
+                            <h3>Tambahkan Postingan</h3>
                             <br>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Judul</label>

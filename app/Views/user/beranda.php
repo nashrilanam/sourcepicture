@@ -79,7 +79,7 @@
 <body>
   <div class="gallery-container">
     <?php foreach ($foto as $foto) : ?>
-      <div class="gallery-item mt-4" onclick="redirectToPage('/post/<?= $foto['id_foto'] ?>')">
+      <div class="gallery-item mt-3" onclick="redirectToPage('/post/<?= $foto['id_foto'] ?>')">
         <img src="/foto_storage/<?= $foto['lokasi_file'] ?>">
       </div>
     <?php endforeach; ?>

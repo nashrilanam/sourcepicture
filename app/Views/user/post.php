@@ -44,13 +44,6 @@
                     <div class="container">
                         <h1><?= $foto['judul_foto'] ?></h1>
                         <p><?= $foto['deskripsi_foto'] ?></p>
-                        <div class="mb-4">
-                            <label for="exampleInputEmail1" class="form-label">Komentar</label>
-                            <input autocomplete="off" type="text" name="judul" id="komentar" class="form-control" placeholder="Masukan Komentar Anda" style="font-size: 15px">
-                        </div>
-                        <div class="d-flex justify-content-end form-check">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
                     </div>
                 </div>
             </div>
