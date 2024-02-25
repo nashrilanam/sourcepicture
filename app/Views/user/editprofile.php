@@ -32,19 +32,19 @@
                             <br>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Nama</label>
-                                <input autocomplete="off" type="text" name="nama" id="nama" class="form-control" placeholder="Ketik Judul Foto Anda" style="font-size: 15px">
+                                <input autocomplete="off" type="text" name="nama" id="nama" class="form-control" placeholder="Ubah Nama Anda" style="font-size: 15px">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                                <input autocomplete="off" type="text" name="username" id="username" class="form-control" placeholder="Ketik Judul Foto Anda" style="font-size: 15px">
+                                <input autocomplete="off" type="text" name="username" id="username" class="form-control" placeholder="Ubah Username Anda" style="font-size: 15px">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input autocomplete="off" type="email" name="email" id="email" class="form-control" placeholder="Ketik Judul Foto Anda" style="font-size: 15px">
+                                <input autocomplete="off" type="email" name="email" id="email" class="form-control" placeholder="Ubah Email Anda" style="font-size: 15px">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputEmail1" class="form-label">Alamat</label>
-                                <input autocomplete="off" type="text" name="alamat" id="alamat" class="form-control" placeholder="Ketik Judul Foto Anda" style="font-size: 15px">
+                                <input autocomplete="off" type="text" name="alamat" id="alamat" class="form-control" placeholder="Ubah Alamat Anda" style="font-size: 15px">
                             </div>
                             <div class="mb-4">
                                 <label for="exampleInputPassword1" class="form-label">Foto</label>
