@@ -23,8 +23,7 @@
             <div class="container text-center mt-5">
                 <img src="<?= 'foto_storage/' . $user['foto'] ?>" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                 <div class="mt-3">
-                    <h3><?= $user['nama_lengkap'] ?></h3>
-                    <h3><?= $user['username'] ?></h3>
+                    <h2><?= $user['nama_lengkap'] ?></h2>
                     <h3><?= $user['email'] ?></h3>
                     <button class="btn btn-primary" onclick="redirectToPage('/editprofile')">Edit Profile</button>
                     <a href="<?= base_url('/') ?>"><button class="btn btn-secondary">Log Out</></button></a>
