@@ -57,6 +57,11 @@ class Start extends BaseController
         return view('user/editprofile');
     }
 
+    public function album()
+    {
+        return view('user/album');
+    }
+
     public function save()
     {
         // ambil gambar

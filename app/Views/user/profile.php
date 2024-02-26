@@ -19,8 +19,8 @@
 
 <body class="bg">
     <div class="card o-hidden border-0 shadow-lg my-5 col-lg-6 mx-auto">
-        <div class="card-body p-0">
-            <div class="container text-center mt-5">
+        <div class="card-body p-8">
+            <div class="container text-center mt-1">
                 <img src="<?= 'foto_storage/' . $user['foto'] ?>" alt="" class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
                 <div class="mt-3">
                     <h2><?= $user['nama_lengkap'] ?></h2>
@@ -36,9 +36,11 @@
                                 </div>
                             </div>
                             <div class="col-info">
-                                <div class="row">
-                                    <div class="container">
-
+                                <div class="row mt-1">
+                                    <div class="col-md d-flex justify-content-center">
+                                        <button type="button" onclick="redirectToPage('/user/album')">Album</button>
+                                        <button class="profile-batten-2 ms-2 me-2" type="button" onclick="redirectToPage('/')">Liked</button>
+                                        <button class="profile-batten-2" type="button" onclick="redirectToPage('/')">MyPost</button>
                                     </div>
                                 </div>
                             </div>

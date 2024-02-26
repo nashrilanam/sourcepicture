@@ -22,3 +22,4 @@ $routes->post('/editprofile/save', 'Start::editprofilesave');
 
 $routes->get('/profile', 'Start::profile');
 $routes->get('/post/(:num)', 'Start::post/$1');
+$routes->get('user/album', 'Start::album');
