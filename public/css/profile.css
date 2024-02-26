@@ -1,0 +1,18 @@
+.profile-batten-2 {
+    width: 90px;
+    height: 45px;
+    border: none;
+    color: rgb(0, 0, 0);
+    background: transparent;
+    font-size: 14px;
+}
+
+.profile-batten-2:hover {
+    width: 90px;
+    height: 45px;
+    border: none;
+    color: blue;
+    background: transparent;
+    border-bottom: 3px solid rgb(4, 0, 255);
+    font-size:14px;
+}
