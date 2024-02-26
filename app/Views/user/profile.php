@@ -30,7 +30,21 @@
                     <a href="<?= base_url('/') ?>"><button class="btn btn-secondary">Log Out</></button></a>
 
                     <hr>
+                    <div class="container background">
+                        <div class="row">
+                            <div class="col-foto">
+                                <div class="casing-foto mx-auto">
+                                </div>
+                            </div>
+                            <div class="col-info">
+                                <div class="row">
+                                    <div class="container">
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <script src="js/onclick.js"></script>
 
                 </div>
