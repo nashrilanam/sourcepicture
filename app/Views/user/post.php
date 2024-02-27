@@ -44,11 +44,20 @@
                     <div class="container">
                         <h1><?= $foto['judul_foto'] ?></h1>
                         <p><?= $foto['deskripsi_foto'] ?></p>
+                        <div class="mb-4">
+                            <form action="/komentar/save/<?= $foto['id_foto']; ?>" method="post">
+                                <label for="exampleInputEmail1" class="form-label">Komentar</label>
+                                <input autocomplete="off" type="text" name="isi_komentar" id="komentar" class="form-control" placeholder="Tulis Komentar Anda" style="font-size: 15px">
+                                <button class="mt-3 btn btn-primary" type="submit">Kirim</button>
+                            </form>
+                            <?php foreach ($komentar as $k) : ?>
+                                <p><?= $k['isi_komentar'] ?></p>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

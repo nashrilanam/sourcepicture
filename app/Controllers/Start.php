@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\FotoModel;
 use App\Models\AuthModel;
+use App\Models\KomentarModel;
 
 
 class Start extends BaseController
@@ -12,12 +13,14 @@ class Start extends BaseController
 
     protected $FotoModel;
     protected $AuthModel;
+    protected $KomentarModel;
     protected $session;
 
     public function __construct()
     {
         $this->FotoModel = new FotoModel();
         $this->AuthModel = new AuthModel();
+        $this->KomentarModel = new KomentarModel();
         $this->session = session();
     }
 
@@ -83,9 +86,9 @@ class Start extends BaseController
 
     public function post($id)
     {
-
         $data = [
-            'foto' => $this->FotoModel->find($id)
+            'foto' => $this->FotoModel->find($id),
+            'komentar' => $this->KomentarModel->findAll($id)
         ];
 
         return view('user/post', $data);
@@ -131,5 +134,24 @@ class Start extends BaseController
         ]);
 
         return redirect()->to('/home');
+    }
+
+    public function komentarsave($id)
+    {
+
+        // ambil id_user dari session
+        $id_user = $this->session->get('id_user');
+        // ambil komentar dari session
+        $isi_komentar = $this->request->getPost('isi_komentar');
+        // simpan data
+        $data = [
+            'id_foto' => $id,
+            'id_user' => $id_user,
+            'isi_komentar' => $isi_komentar
+        ];
+
+        $this->KomentarModel->insert($data);
+
+        return redirect()->back();
     }
 }
