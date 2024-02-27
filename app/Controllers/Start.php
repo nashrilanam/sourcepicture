@@ -86,14 +86,14 @@ class Start extends BaseController
 
     public function post($id)
     {
-
         $data = [
             'foto' => $this->FotoModel->find($id),
-            'komentar' => $this->KomentarModel->findAll($id)
+            'komentar' => $this->KomentarModel->where('id_foto', $id)->findAll()
         ];
-
+    
         return view('user/post', $data);
     }
+    
 
     public function editprofilesave()
     {
