@@ -86,26 +86,6 @@ class Start extends BaseController
 
     public function post($id)
     {
-        $db = \Config\Database::connect(); // Mendapatkan objek database
-        $sql = "SELECT * FROM komentar JOIN user ON id_komentar.id_user = user.id_user ORDER BY isi_komentar.tanggal_komentar";
-        $query = $db->query($sql);
-        $komentar = $query->getResult();
-        $komentar = json_decode(json_encode($komentar), true);
-        $komentar = array_filter($komentar, function ($var) use ($id) {
-            return ($var['id_user'] == $id);
-        });
-
-    
-        $data = [
-            'validation' => \Config\Services::validation(),
-            'fotodata' => $fotodata,
-            'komentar' => $komentar,
-            'user' => $user,
-            'jumlahlike' => $jumlahlike,
-            'liked' => $liked,
-            'url' => $url,
-            'album' => $album,
-        ];
 
         $data = [
             'foto' => $this->FotoModel->find($id),
