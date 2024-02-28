@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Start::index');
 $routes->get('/register', 'Start::register');
 $routes->get('/login', 'Start::login');
+$routes->get('/auth/activate/(:any)', 'Auth::activate/$1');
 
 $routes->get('/home', 'Home::index');
 
@@ -24,3 +25,4 @@ $routes->get('/profile', 'Start::profile');
 $routes->get('/post/(:num)', 'Start::post/$1');
 $routes->get('user/album', 'Start::album');
 $routes->post('/komentar/save/(:num)', 'Start::komentarsave/$1');
+$routes->post('/like/(:num)', 'Start::like/$1');

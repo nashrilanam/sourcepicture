@@ -51,12 +51,38 @@ class Auth extends BaseController
             'email' => $data['email'],
             'alamat' => $data['alamat'],
             'password' => $data['password'],
-            'foto' => $data['foto']
+            'foto' => $data['foto'],
+            'active' => $token,
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
-        return redirect()->to('/login');
+         // Arahkan ke halaman login
+         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan cek email anda untuk aktivasi akun');
+         return redirect()->to('/login');
+     }
+
+    public function activate($token)
+    {
+        if ($token) {
+            $user = $this->AuthModel->where(['active' => $token])->first();
+            if ($user) {
+                $this->AuthModel->save([
+                    'id_user' => $user['id_user'],
+                    'active' => 'true'
+                ]);
+
+                session()->setFlashdata('aktif', 'Akun berhasil diaktivasi');
+                return redirect()->to('/');
+            } else {
+                session()->setFlashdata('token', 'Token tidak ditemukan');
+                return redirect()->to('/');
+            }
+        } else {
+            session()->setFlashdata('token', 'Token tidak ditemukan');
+            return redirect()->to('/');
+        }
     }
+
+
 
     public function valid_login()
     {

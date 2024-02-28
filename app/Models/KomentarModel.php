@@ -26,7 +26,7 @@ class KomentarModel extends Model
         ->orderBy('created_at', 'DESC')
         ->findAll();
     }
-    
-}
+
+} 
 
    
