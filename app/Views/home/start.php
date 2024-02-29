@@ -20,7 +20,7 @@
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-    <a class="navbar-brand" href="/home">
+      <a class="navbar-brand" href="/home">
         <img src="/img/logo5.png" alt="" style="object-fit: cover;" width="70" height="45" class="d-inline-block align-text-top">
       </a>
       <a class="navbar-brand" href="#">SOURCE PICTURE</a>
@@ -49,4 +49,5 @@
 <body>
   <script src="js/onclick.js"></script>
 </body>
+
 </html>

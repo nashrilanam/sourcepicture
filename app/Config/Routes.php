@@ -25,4 +25,4 @@ $routes->get('/profile', 'Start::profile');
 $routes->get('/post/(:num)', 'Start::post/$1');
 $routes->get('user/album', 'Start::album');
 $routes->post('/komentar/save/(:num)', 'Start::komentarsave/$1');
-$routes->post('/like/(:num)', 'Start::like/$1');
+
