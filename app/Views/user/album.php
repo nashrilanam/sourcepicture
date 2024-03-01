@@ -5,9 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/album.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css">
+  <script src="https://kit.fontawesome.com/6d2fa4f343.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="js/onclick.js"></script>
   <title>SOURCE PICTURE</title>
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -33,7 +37,7 @@
       </ul>
       <ul class="navbar-nav me-5 ms-5 mx-auto mb-lg-0">
         <li class="nav-item">
-        <form class="d-flex" role="search" method="post" action="/search">
+          <form class="d-flex" role="search" method="post" action="/search">
             <input class="form-control me-2 inisearch1" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary inisearch" type="submit">Search</button>
           </form>
@@ -90,18 +94,18 @@
         </div>
       </div>
       <span class="iconsetting" onclick="bukaAlbumSetting('<?= $a['id_album'] ?>','<?= $a['nama_album']; ?>')"><i class="bi bi-gear-fill"></i></span>
-    <?php endforeach;?>
+    <?php endforeach; ?>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  function bukaAlbumSetting($id,album) {
+  function bukaAlbumSetting($id, album) {
     event.stopPropagation();
-    albumSetting($id,album);
+    albumSetting($id, album);
   }
 
 
-  function albumSetting($id,album) {
+  function albumSetting($id, album) {
     Swal.fire({
       title: "Setting Album",
       showDenyButton: true,
@@ -111,9 +115,9 @@
 
     }).then((result) => {
       if (result.isConfirmed) {
-        editalbum($id,album);
+        editalbum($id, album);
       } else if (result.isDenied) {
-        hapusalbum($id,album);
+        hapusalbum($id, album);
       }
     });
   }
@@ -146,7 +150,7 @@
 
 
 
-  function hapusalbum($id,album) {
+  function hapusalbum($id, album) {
     Swal.fire({
       title: "Are you sure",
       text: "You want to delete this album?",
@@ -163,33 +167,33 @@
 
   function editalbum($id, album) {
     Swal.fire({
-        input: "text",
-        inputLabel: "Edit Album",
-        inputValue: album,
-        inputPlaceholder: "Enter album name...",
-        showCancelButton: true,
-        confirmButtonText: "Edit",
-        cancelButtonText: "Batalkan",
-        inputAttributes: {
-            autocomplete: "off"
-        },
-        preConfirm: (value) => {
-            return new Promise((resolve) => {
-                if (value.trim() === "") {
-                    resolve("You need to enter an album name");
-                } else {
-                    const editUrl = '/editalbum/' + $id;
-                    window.location.href = editUrl + '/' + value;
-                }
-            });
-        },
-        allowOutsideClick: () => !Swal.isLoading()
+      input: "text",
+      inputLabel: "Edit Album",
+      inputValue: album,
+      inputPlaceholder: "Enter album name...",
+      showCancelButton: true,
+      confirmButtonText: "Edit",
+      cancelButtonText: "Batalkan",
+      inputAttributes: {
+        autocomplete: "off"
+      },
+      preConfirm: (value) => {
+        return new Promise((resolve) => {
+          if (value.trim() === "") {
+            resolve("You need to enter an album name");
+          } else {
+            const editUrl = '/editalbum/' + $id;
+            window.location.href = editUrl + '/' + value;
+          }
+        });
+      },
+      allowOutsideClick: () => !Swal.isLoading()
     }).then((result) => {
-        if (result.isConfirmed) {
-            // Handle confirmation
-        }
+      if (result.isConfirmed) {
+        // Handle confirmation
+      }
     });
-}
-
+  }
 </script>
+
 </html>
