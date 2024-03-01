@@ -61,14 +61,15 @@
                                         <button class="mt-3 btn btn-primary" type="submit">Kirim</button>
                                     </form>
                                     <?php foreach ($komentar as $k) : ?>
-                                  <p><?= $k['username'] ?> : <?= $k['isi_komentar'] ?></p>
-                                <?php endforeach;?>
+                                    <p>@<?= $k['username'] ?> : <?= $k['isi_komentar'] ?></p>
+                                  <?php endforeach;?>
                                 </div>
                             </div>
                     </div>
                 </div>
             </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 function album(albumUrl) {
       Swal.fire({
@@ -114,12 +115,14 @@ function album(albumUrl) {
         autocomplete: "off"
       },
       inputValidator: (value) => {
-        if (value == "") {
-          resolve("nama album tidak boleh kosong");
-        } else {
-          const album = buatalbumUrl + value;
-          window.location.href = album;
-        }
+        return new Promise((resolve) => {
+          if (value == "") {
+            resolve("nama album tidak boleh kosong");
+          } else {
+            const album = buatalbumUrl + value;
+            window.location.href = album;
+          }
+        })
       },
     });
 }

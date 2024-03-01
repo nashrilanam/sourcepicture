@@ -25,8 +25,8 @@ class Start extends BaseController
         $this->FotoModel = new FotoModel();
         $this->AuthModel = new AuthModel();
         $this->KomentarModel = new KomentarModel();
-        $this->KomentarModel = new LikeModel();
-        $this->KomentarModel = new AlbumModel();
+        $this->LikeModel = new LikeModel();
+        $this->AlbumModel = new AlbumModel();
         $this->session = session();
     }
 
@@ -66,13 +66,13 @@ class Start extends BaseController
         return view('user/editprofile');
     }
 
-    public function album($id)
+    public function album()
     {
-        $album = $this->AlbumModel->where(['id_user' => $id])->findAll();
+        $album = $this->AlbumModel->where('id_user',session('id_user'))->findAll();
         $data = [
             'album' => $album
         ];
-        return view('user/album');
+        return view('user/album',$data);
     }
 
     public function liked($id)
@@ -121,7 +121,7 @@ class Start extends BaseController
         });
 
         $iduser = session('id_user');
-        $like = $this->LikeModel->getLikeByPost($id);
+        $like = $this->LikeModel->where('id_foto',$id)->findAll();
         $jumlahlike = count($like);
         $liked = $this->LikeModel->hasUserLikedPost($iduser, $id);
         $album = $this->AlbumModel->where(['id_user' => $iduser])->findAll();

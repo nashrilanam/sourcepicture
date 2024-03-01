@@ -26,7 +26,7 @@ $routes->get('/post/(:num)', 'Start::post/$1');
 $routes->get('user/album', 'Start::album');
 $routes->post('/komentar/save/(:num)', 'Start::komentarsave/$1');
 
-$routes->get('/user/album/(:num)', 'Start::album/$1');
+$routes->get('/user/album/', 'Start::album');
 $routes->get('/user/like/(:num)', 'Start::liked/$1');
 
 

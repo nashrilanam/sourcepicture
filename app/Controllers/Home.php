@@ -128,8 +128,6 @@ class Home extends BaseController
             $foto[] = $this->FotoModel->where('id_foto', $a['id_foto'])->findAll();
         }
        
-
-
         $data = [
             'album' => $album,
             'foto' => $foto,

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
   <title>SOURCE PICTURE</title>
 
@@ -32,8 +33,8 @@
       </ul>
       <ul class="navbar-nav me-5 ms-5 mx-auto mb-lg-0">
         <li class="nav-item">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 inisearch1" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" method="post" action="/search">
+            <input class="form-control me-2 inisearch1" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary inisearch" type="submit">Search</button>
           </form>
         </li>
@@ -81,25 +82,26 @@
     <button onclick="buatalbum('/submitalbum/');" class="btn btn-lg btn-primary">Tambah</button>
   </div>
   <br>
-  <div class="containerku d-flex gap-3">
+  <div class="containerku d-flex align-items-center gap-3">
     <?php foreach ($album as $a) : ?>
       <div class="cardalbum" onclick="redirectToPage('/bukaalbum/<?= $a['id_album']; ?>')">
         <div class="titlezone">
           <span class="title"><?= $a['nama_album']; ?></span>
-          <span class="iconsetting" onclick="bukaAlbumSetting('<?= $a['id_album'] ?>')"><i class="fa-solid fa-gear"> </i></span>
         </div>
       </div>
+      <span class="iconsetting" onclick="bukaAlbumSetting('<?= $a['id_album'] ?>','<?= $a['nama_album']; ?>')"><i class="bi bi-gear-fill"></i></span>
     <?php endforeach;?>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-  function bukaAlbumSetting($id) {
+  function bukaAlbumSetting($id,album) {
     event.stopPropagation();
-    albumSetting($id);
+    albumSetting($id,album);
   }
 
 
-  function albumSetting($id) {
+  function albumSetting($id,album) {
     Swal.fire({
       title: "Setting Album",
       showDenyButton: true,
@@ -109,9 +111,9 @@
 
     }).then((result) => {
       if (result.isConfirmed) {
-        editalbum($id);
+        editalbum($id,album);
       } else if (result.isDenied) {
-        hapusalbum($id);
+        hapusalbum($id,album);
       }
     });
   }
@@ -144,7 +146,7 @@
 
 
 
-  function hapusalbum($id) {
+  function hapusalbum($id,album) {
     Swal.fire({
       title: "Are you sure",
       text: "You want to delete this album?",
@@ -159,26 +161,35 @@
     });
   }
 
-  function editalbum($id) {
+  function editalbum($id, album) {
     Swal.fire({
-      input: "text",
-      inputLabel: "Edit Album",
-      inputPlaceholder: "Enter album name...",
-      showCancelButton: true,
-      confirmButtonText: "Edit",
-      cancelButtonText: "Batalkan",
-      inputAttributes: {
-        autocomplete: "off"
-      },
-      inputValidator: (value) => {
-        if (value == "") {
-          resolve("You need to enter an album name");
-        } else {
-          const editUrl = '/editalbum/' + $id;
-          window.location.href = editUrl + '/' + value;
+        input: "text",
+        inputLabel: "Edit Album",
+        inputValue: album,
+        inputPlaceholder: "Enter album name...",
+        showCancelButton: true,
+        confirmButtonText: "Edit",
+        cancelButtonText: "Batalkan",
+        inputAttributes: {
+            autocomplete: "off"
+        },
+        preConfirm: (value) => {
+            return new Promise((resolve) => {
+                if (value.trim() === "") {
+                    resolve("You need to enter an album name");
+                } else {
+                    const editUrl = '/editalbum/' + $id;
+                    window.location.href = editUrl + '/' + value;
+                }
+            });
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Handle confirmation
         }
-      },
     });
-    }
+}
+
 </script>
 </html>

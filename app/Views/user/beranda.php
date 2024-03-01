@@ -33,7 +33,7 @@
       <ul class="navbar-nav me-5 ms-5 mx-auto mb-lg-0">
         <li class="nav-item">
           <form class="d-flex" role="search" method="post" action="/search">
-            <input class="form-control me-2 inisearch1" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2 inisearch1" name="keyword" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary inisearch" type="submit">Search</button>
           </form>
         </li>
