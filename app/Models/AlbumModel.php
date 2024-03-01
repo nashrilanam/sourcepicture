@@ -6,17 +6,13 @@ use CodeIgniter\Model;
 
 class AlbumModel extends Model
 {
-    protected $table = 'foto';
+    protected $table = 'album';
     protected $useAutoIncrement = true;
     protected $primaryKey = 'id_album';
     protected $allowedFields = ['nama_album', 'deskripsi', 'tanggal_dibuat', 'id_user'];
 
-    public function getAlbum($id = false)
+    public function getAlbumbyID($id = false)
     {
-        if ($id == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['id_album' => $id])->first();
+        return $this->where(['id_user' => $id])->findAll();
     }
 }

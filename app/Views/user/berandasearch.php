@@ -22,7 +22,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-lg-0 inicreate">
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="/upload"></a>
+          <a class="nav-link active " aria-current="page" href="/upload">Upload</a>
         </li>
       </ul>
       <ul class="navbar-nav me-3 ms-2 mb-lg-0 inicrt">
@@ -32,7 +32,7 @@
       </ul>
       <ul class="navbar-nav me-5 ms-5 mx-auto mb-lg-0">
         <li class="nav-item">
-          <form class="d-flex" role="search">
+          <form class="d-flex" role="search" method="post" action="/search">
             <input class="form-control me-2 inisearch1" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary inisearch" type="submit">Search</button>
           </form>
@@ -75,110 +75,18 @@
     }
   </style>
 </head>
-
 <body>
-  <div class="d-flex justify-content-center mt-3">
-    <button onclick="buatalbum('/submitalbum/');" class="btn btn-lg btn-primary">Tambah</button>
-  </div>
-  <br>
-  <div class="containerku d-flex gap-3">
-    <?php foreach ($album as $a) : ?>
-      <div class="cardalbum" onclick="redirectToPage('/bukaalbum/<?= $a['id_album']; ?>')">
-        <div class="titlezone">
-          <span class="title"><?= $a['nama_album']; ?></span>
-          <span class="iconsetting" onclick="bukaAlbumSetting('<?= $a['id_album'] ?>')"><i class="fa-solid fa-gear"> </i></span>
-        </div>
+<div class="gallery-container">
+    <?php foreach ($foto as $foto) : ?>
+      <div class="gallery-item mt-3" onclick="redirectToPage('/post/<?= $foto['id_foto'] ?>')">
+        <img src="/foto_storage/<?= $foto['lokasi_file'] ?>">
       </div>
-    <?php endforeach;?>
+    <?php endforeach; ?>
   </div>
+
+
+<script src="js/onclick.js"></script>
+<script src="https://kit.fontawesome.com/a3864c1aa4.js" crossorigin="anonymous"></script>
+
 </body>
-<script>
-  function bukaAlbumSetting($id) {
-    event.stopPropagation();
-    albumSetting($id);
-  }
-
-
-  function albumSetting($id) {
-    Swal.fire({
-      title: "Setting Album",
-      showDenyButton: true,
-      confirmButtonText: "Edit",
-      denyButtonText: "Hapus",
-      denyButtonColor: "red",
-
-    }).then((result) => {
-      if (result.isConfirmed) {
-        editalbum($id);
-      } else if (result.isDenied) {
-        hapusalbum($id);
-      }
-    });
-  }
-
-  function redirectToPage(pageUrl) {
-    window.location.href = pageUrl;
-  }
-
-  function buatalbum(buatalbumUrl) {
-    Swal.fire({
-      input: "text",
-      inputLabel: "Buat Album Baru",
-      inputPlaceholder: "Nama Album...",
-      showCancelButton: true,
-      confirmButtonText: "Buat",
-      cancelButtonText: "Cancel",
-      inputAttributes: {
-        autocomplete: "off"
-      },
-      inputValidator: (value) => {
-        if (value == "") {
-          resolve("nama album tidak boleh kosong");
-        } else {
-          const album = buatalbumUrl + value;
-          window.location.href = album;
-        }
-      },
-    });
-  }
-
-
-
-  function hapusalbum($id) {
-    Swal.fire({
-      title: "Are you sure",
-      text: "You want to delete this album?",
-      showCancelButton: true,
-      confirmButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.value) {
-        const deleteUrl = '/hapusalbum/' + $id;
-        window.location.href = deleteUrl;
-      }
-    });
-  }
-
-  function editalbum($id) {
-    Swal.fire({
-      input: "text",
-      inputLabel: "Edit Album",
-      inputPlaceholder: "Enter album name...",
-      showCancelButton: true,
-      confirmButtonText: "Edit",
-      cancelButtonText: "Batalkan",
-      inputAttributes: {
-        autocomplete: "off"
-      },
-      inputValidator: (value) => {
-        if (value == "") {
-          resolve("You need to enter an album name");
-        } else {
-          const editUrl = '/editalbum/' + $id;
-          window.location.href = editUrl + '/' + value;
-        }
-      },
-    });
-    }
-</script>
 </html>

@@ -6,18 +6,19 @@ use CodeIgniter\Model;
 
 class LikeModel extends Model
 {
-    protected $table      = 'like';
+    protected $table      = 'likefoto';
     protected $useAutoIncrement = true;
     protected $primaryKey = 'id_like';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_like', 'id_foto', 'id_user'];
+    protected $allowedFields = ['id_foto', 'id_user', 'tanggal_like'];
 
-    public function getLike($id = false)
+    public function hasUserLikedPost($iduser, $idfoto)
     {
-        if ($id == false) {
-            return $this->findAll();
-        }
+        return $this->where(['id_user' => $iduser, 'id_foto' => $idfoto])->countAllResults() > 0;
+    }
 
-        return $this->where(['id_like' => $id])->first();
+    public function getLikeByPost($id)
+    {
+        return $this->where(['id_foto' => $id])->findAll();
     }
 }

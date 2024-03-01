@@ -45,7 +45,6 @@
     </div>
   </nav>
 </head>
-
 <body>
   <script src="js/onclick.js"></script>
 </body>

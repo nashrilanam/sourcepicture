@@ -6,6 +6,8 @@ use CodeIgniter\Controller;
 use App\Models\FotoModel;
 use App\Models\AuthModel;
 use App\Models\KomentarModel;
+use App\Models\LikeModel;
+use App\Models\AlbumModel;
 
 
 class Start extends BaseController
@@ -14,6 +16,8 @@ class Start extends BaseController
     protected $FotoModel;
     protected $AuthModel;
     protected $KomentarModel;
+    protected $LikeModel;
+    protected $AlbumModel;
     protected $session;
 
     public function __construct()
@@ -21,6 +25,8 @@ class Start extends BaseController
         $this->FotoModel = new FotoModel();
         $this->AuthModel = new AuthModel();
         $this->KomentarModel = new KomentarModel();
+        $this->KomentarModel = new LikeModel();
+        $this->KomentarModel = new AlbumModel();
         $this->session = session();
     }
 
@@ -60,9 +66,28 @@ class Start extends BaseController
         return view('user/editprofile');
     }
 
-    public function album()
+    public function album($id)
     {
+        $album = $this->AlbumModel->where(['id_user' => $id])->findAll();
+        $data = [
+            'album' => $album
+        ];
         return view('user/album');
+    }
+
+    public function liked($id)
+    {
+        $like = $this->LikeModel->where(['id_user' => $id])->findAll();
+        $foto = [];
+        foreach ($like as $l) {
+            $foto[] = $this->FotoModel->find($l['id_foto']);
+        }
+        $foto = array_reverse($foto);
+
+        $data = [
+            'foto' => $foto
+        ];
+        return view('user/liked',$data);
     }
 
     public function save()
@@ -86,12 +111,30 @@ class Start extends BaseController
 
     public function post($id)
     {
+        $db = \Config\Database::connect(); // Mendapatkan objek database
+        $sql = "SELECT * FROM komentar JOIN user ON komentar.id_user = user.id_user";
+        $query = $db->query($sql);
+        $komentar = $query->getResult();
+        $komentar = json_decode(json_encode($komentar), true);
+        $komentar = array_filter($komentar, function ($var) use ($id) {
+            return ($var['id_foto'] == $id);
+        });
+
+        $iduser = session('id_user');
+        $like = $this->LikeModel->getLikeByPost($id);
+        $jumlahlike = count($like);
+        $liked = $this->LikeModel->hasUserLikedPost($iduser, $id);
+        $album = $this->AlbumModel->where(['id_user' => $iduser])->findAll();
+
         $data = [
             'foto' => $this->FotoModel->find($id),
-            'komentar' => $this->KomentarModel->where('id_foto', $id)->findAll()
+            'komentar' => $komentar,
+            'terlike' => $liked,
+            'totallike' => $jumlahlike,
+            'album' => $album,
         ];
-    
         return view('user/post', $data);
+
     }
     
 

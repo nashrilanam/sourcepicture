@@ -26,3 +26,17 @@ $routes->get('/post/(:num)', 'Start::post/$1');
 $routes->get('user/album', 'Start::album');
 $routes->post('/komentar/save/(:num)', 'Start::komentarsave/$1');
 
+$routes->get('/user/album/(:num)', 'Start::album/$1');
+$routes->get('/user/like/(:num)', 'Start::liked/$1');
+
+
+$routes->post('/search', 'Home::search');
+$routes->get('/like/(:num)', 'Home::like/$1');
+$routes->get('/unlike/(:num)', 'Home::unlike/$1');
+$routes->get('/hapusalbum/(:num)', 'Home::hapusalbum/$1');
+$routes->get('/editalbum/(:num)/(:any)', 'Home::editalbum/$1/$2');
+$routes->get('/hapusdarialbum/(:num)/(:num)', 'Home::hapusdarialbum/$1/$2');
+$routes->get('/submitalbum/(:any)', 'Home::submitalbum/$1');
+$routes->get('/tambahalbum/(:num)/(:num)', 'Home::tambahalbum/$1/$2');
+$routes->get('/bukaalbum/(:num)', 'Home::bukaalbum/$1');
+

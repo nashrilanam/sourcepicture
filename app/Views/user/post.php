@@ -44,19 +44,84 @@
                     <div class="container">
                         <h1><?= $foto['judul_foto'] ?></h1>
                         <p><?= $foto['deskripsi_foto'] ?></p>
-                        <div class="mb-4">
-                            <form action="/komentar/save/<?= $foto['id_foto']; ?>" method="post">
-                                <label for="exampleInputEmail1" class="form-label">Komentar</label>
-                                <input autocomplete="off" type="text" name="isi_komentar" id="komentar" class="form-control" placeholder="Tulis Komentar Anda" style="font-size: 15px">
-                                <button class="mt-3 btn btn-primary" type="submit">Kirim</button>
-                            </form>
-                            <?php foreach ($komentar as $k) : ?>
-                                <p><?= $k['isi_komentar'] ?></p>
-                            <?php endforeach; ?>
-                        </div>
+
+                        <?php if ($terlike) : ?>
+                            <a href="/unlike/<?= $foto['id_foto'] ?>" class="btn btn-secondary"><i class="fa-solid fa-heart fa-xl" style="color: #ff0000;"></i> <?= $totallike ?></a>
+                        <?php else : ?>
+                            <a href="/like/<?= $foto['id_foto'] ?>" class="btn btn-secondary" style="opacity: 0.7;"><i class="fa-regular fa-heart fa-xl"></i> <?= $totallike ?></a>
+                        <?php endif; ?>
+                        <a onclick="album('/tambahalbum/<?= $foto['id_foto'] ?>/')" class="btn btn-primary"><i class="fa-solid fa-bookmark fa-xl" style="color: black;"></i></a>
+
+                        <row class="hidden-form-komentar">
+                            <div class="hidden-four">
+                                <div class="form_komentar2">
+                                    <form action="/komentar/save/<?= $foto['id_foto']; ?>" method="post">
+                                        <label for="exampleInputEmail1" class="form-label">Komentar</label>
+                                        <input autocomplete="off" type="text" name="isi_komentar" id="komentar" class="form-control" placeholder="Tulis Komentar Anda" style="font-size: 15px">
+                                        <button class="mt-3 btn btn-primary" type="submit">Kirim</button>
+                                    </form>
+                                    <?php foreach ($komentar as $k) : ?>
+                                  <p><?= $k['username'] ?> : <?= $k['isi_komentar'] ?></p>
+                                <?php endforeach;?>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>
-        </div>
 </body>
+<script>
+function album(albumUrl) {
+      Swal.fire({
+        text: "Pilih album untuk menyimpan foto ini",
+        input: "select",
+        inputOptions: {
+          <?php foreach ($album as $a) : ?> "<?php echo $a['id_album']; ?>": "<?php echo $a['nama_album']; ?>",
+          <?php endforeach; ?>},
+        inputPlaceholder: "Pilih",
+        showCancelButton: true,
+        confirmButtonText: "Pilih",
+        cancelButtonText: "Batalkan",
+        showDenyButton: true,
+        denyButtonColor: "#3085d6",
+        denyButtonText: "Buat Album Baru",
+        inputValidator: (value) => {
+          return new Promise((resolve) => {
+            if (value === "") {
+              resolve("tolong pilih album");
+            } else {
+              const albumUrls = albumUrl + value;
+              window.location.href = albumUrls;
+            }
+          })  
+        }, 
+      })
+      .then((result) => {
+            if (result.isDenied) {
+            buatalbum('/submitalbum/');
+            }
+          });
+    }
+
+    function buatalbum(buatalbumUrl) {
+    Swal.fire({
+      input: "text",
+      inputLabel: "Buat Album Baru",
+      inputPlaceholder: "Nama Album...",
+      showCancelButton: true,
+      confirmButtonText: "Buat",
+      cancelButtonText: "Batalkan",
+      inputAttributes: {
+        autocomplete: "off"
+      },
+      inputValidator: (value) => {
+        if (value == "") {
+          resolve("nama album tidak boleh kosong");
+        } else {
+          const album = buatalbumUrl + value;
+          window.location.href = album;
+        }
+      },
+    });
+}
+</script>
 </html>

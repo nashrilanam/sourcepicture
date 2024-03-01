@@ -18,13 +18,6 @@ class KomentarModel extends Model
         }
 
         return $this->where(['id_komentar' => $id])->first();
-
-
-        return $this->select('isi_komentar.*, user.username')
-            ->join('user', 'user.id_user = isi_komentar.id_user')
-            ->where(['id_foto' => $id])
-            //call the lastest comment
-            ->orderBy('created_at', 'DESC')
-            ->findAll();
+        
     }
 }
