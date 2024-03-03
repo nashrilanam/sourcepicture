@@ -98,6 +98,7 @@ class Auth extends BaseController
         if ($user) {
             // cek apakah password benar
             if (password_verify($data['password'], $user['password'])) {
+                if ($user['active'] == 'true') {
                 session()->set([
                     'id_user' => $user['id_user'],
                     'username' => $user['username'],
@@ -108,7 +109,12 @@ class Auth extends BaseController
                     'foto' => $user['foto'],
                     'logged_in' => TRUE
                 ]);
+                session()->set($data);
                 return redirect()->to('/home');
+            } else {
+                session()->setFlashdata('pesan', 'Akun belum diaktivasi');
+                return redirect()->to('/login');
+            }
             } else {
                 session()->setFlashdata('pesan', 'Password salah.');
                 return redirect()->to('/login');
