@@ -40,6 +40,7 @@ class Auth extends BaseController
 
         $email = \Config\Services::email();
         $email->setTo($data['email']);
+        $email->setFrom('sourcepictureofficial@gmail.com', 'SourcePicture');
         $email->setSubject('Registrasi Akun');
         $email->setMessage('Selamat Datang ' . $data['username'] . ' di SourcePicture, akun anda berhasil dibuat. Silahkan Activasi akun anda dengan klik link berikut :' . base_url() . 'auth/activate/' . $token);
         $email->send();
