@@ -55,10 +55,10 @@ class Auth extends BaseController
             'active' => $token,
         ]);
 
-         // Arahkan ke halaman login
-         session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan cek email anda untuk aktivasi akun');
-         return redirect()->to('/login');
-     }
+        // Arahkan ke halaman login
+        session()->setFlashdata('login', 'Anda berhasil mendaftar, silahkan cek email anda untuk aktivasi akun');
+        return redirect()->to('/login');
+    }
 
     public function activate($token)
     {
@@ -71,14 +71,14 @@ class Auth extends BaseController
                 ]);
 
                 session()->setFlashdata('aktif', 'Akun berhasil diaktivasi');
-                return redirect()->to('/');
+                return redirect()->to('/login');
             } else {
                 session()->setFlashdata('token', 'Token tidak ditemukan');
-                return redirect()->to('/');
+                return redirect()->to('/login');
             }
         } else {
             session()->setFlashdata('token', 'Token tidak ditemukan');
-            return redirect()->to('/');
+            return redirect()->to('/login');
         }
     }
 
