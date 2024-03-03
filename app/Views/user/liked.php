@@ -22,7 +22,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-lg-0 inicreate">
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="/upload">Upload</a>
+          <a class="nav-link active "></a>
         </li>
       </ul>
       <ul class="navbar-nav me-3 ms-2 mb-lg-0 inicrt">

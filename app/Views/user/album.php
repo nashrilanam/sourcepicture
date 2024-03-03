@@ -27,7 +27,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-lg-0 inicreate">
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="/upload"></a>
+          <a class="nav-link active "></a>
         </li>
       </ul>
       <ul class="navbar-nav me-3 ms-2 mb-lg-0 inicrt">
@@ -152,11 +152,11 @@
 
   function hapusalbum($id, album) {
     Swal.fire({
-      title: "Are you sure",
-      text: "You want to delete this album?",
+      title: "Apakah Kamu Yakin",
+      text: "Anda Ingin Menghapus Album Ini?",
       showCancelButton: true,
       confirmButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes , Hapus Saja!",
     }).then((result) => {
       if (result.value) {
         const deleteUrl = '/hapusalbum/' + $id;
@@ -170,7 +170,7 @@
       input: "text",
       inputLabel: "Edit Album",
       inputValue: album,
-      inputPlaceholder: "Enter album name...",
+      inputPlaceholder: "Masukan Nama Album...",
       showCancelButton: true,
       confirmButtonText: "Edit",
       cancelButtonText: "Batalkan",
@@ -180,7 +180,7 @@
       preConfirm: (value) => {
         return new Promise((resolve) => {
           if (value.trim() === "") {
-            resolve("You need to enter an album name");
+            resolve("Anda Harus Memasukan Nama Album");
           } else {
             const editUrl = '/editalbum/' + $id;
             window.location.href = editUrl + '/' + value;

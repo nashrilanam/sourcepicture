@@ -42,8 +42,6 @@
                                 <div class="row mt-1">
                                     <div class="col-md d-flex justify-content-center">
                                         <button class="profile-batten-2 active-2" type="button" onclick="redirectToPage('/user/album')">Album</button>
-                                        <button class="profile-batten-2 ms-2 me-2" type="button" onclick="redirectToPage('user/liked')">Liked</button>
-                                        <button class="profile-batten-2" type="button" onclick="redirectToPage('/')">MyPost</button>
                                     </div>
                                 </div>
                             </div>

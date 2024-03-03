@@ -24,7 +24,7 @@
       </ul>
       <ul class="navbar-nav me-auto mb-lg-0 inicreate">
         <li class="nav-item">
-          <a class="nav-link active " aria-current="page" href="/upload">Upload</a>
+          <a class="nav-link active "></a>
         </li>
       </ul>
       <ul class="navbar-nav me-3 ms-2 mb-lg-0 inicrt">
@@ -77,8 +77,9 @@
     }
   </style>
 </head>
+
 <body>
-<div class="d-flex justify-content-center mt-3 mb-3">
+  <div class="d-flex justify-content-center mt-3 mb-3">
     <h1><?= $album[0]['nama_album'] ?></h1>
   </div>
   <div class="gallery-container">
@@ -116,6 +117,7 @@
   function visitfoto($id) {
     const visitUrl = '/post/' + $id;
     window.location.href = visitUrl;
-    }
+  }
 </script>
+
 </html>

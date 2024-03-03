@@ -40,3 +40,6 @@ $routes->get('/submitalbum/(:any)', 'Home::submitalbum/$1');
 $routes->get('/tambahalbum/(:num)/(:num)', 'Home::tambahalbum/$1/$2');
 $routes->get('/bukaalbum/(:num)', 'Home::bukaalbum/$1');
 
+$routes->post('/post/delete/(:num)', 'Start::delete/$1');
+$routes->post('/post/download/(:num)', 'Start::download/$1');
+
